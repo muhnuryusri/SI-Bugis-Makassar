@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/drawable/rounded_shape.xml" value="0.2755208333333333" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/font/lora_bold.xml" value="0.28958333333333336" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/font/montserrat_bold.xml" value="0.16354166666666667" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/activity_admin.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/activity_admin_login.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/activity_edit_hot_news.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/activity_login.xml" value="0.259375" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/activity_main.xml" value="0.13389121338912133" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/activity_sejarah_bugis.xml" value="0.21558441558441557" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/activity_sejarah_bugis2.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/app_bar_info.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/app_bar_main.xml" value="0.2" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/app_bar_main_admin.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/content_main.xml" value="0.23424270931326435" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/content_main_admin.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_adat_pernikahan.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_adat_pernikahan.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_article.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_content.xml" value="0.264" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_hot_news.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_hot_spot.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_lontara.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_musik_tradisional.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_pakaian_adat.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_rumah_adat.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_sejarah_bugis.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_tarian_tradisional.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_add_tempat_wisata.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_adat_pernikahan.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_home.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_hot_news.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_hot_spot.xml" value="0.2" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_info.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_lontara.xml" value="0.12280701754385964" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_musik_tradisional.xml" value="0.12280701754385964" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_pakaian_adat.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_rumah_adat.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_sejarah_bugis.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_tarian_tradisional.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_admin_tempat_wisata.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_edit_article.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_edit_content.xml" value="0.20657894736842106" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_edit_hot_news.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_hot_news.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_hot_spot.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_info.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_lontara.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_musik_tradisional.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_pakaian_adat.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_rumah_adat.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_sejarah_bugis.xml" value="0.264" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_tarian_tradisional.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_tempat_wisata.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_content_with_video.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_article.xml" value="0.264" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_article_edit.xml" value="0.264" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_article_edit_with_video.xml" value="0.264" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_article_with_video.xml" value="0.264" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_content.xml" value="0.264" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_content_edit.xml" value="0.4" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_content_edit_with_video.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_content_with_video.xml" value="0.2" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/nav_header_main.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/update_dialog.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/menu/activity_main_drawer.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/menu/custom_menu.xml" value="0.264" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/menu/custom_menu_admin.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/menu/home.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/menu/main.xml" value="0.21842105263157896" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

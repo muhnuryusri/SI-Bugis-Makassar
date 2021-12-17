@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/yellow"
+    tools:context=".user.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/logo_white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Admin"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/btn_sejarah_bugis"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/icon_sejarah_bugis_makassar" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:gravity="center"
+                            android:lineHeight="10dp"
+                            android:text="@string/sejarah_bugis"
+                            android:textColor="@color/black"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_lontara"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/icon_lontara" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:lineHeight="10dp"
+                            android:text="@string/lontara"
+                            android:textColor="@color/black"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_rumah_adat"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/icon_rumah_adat" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:lineHeight="10dp"
+                            android:text="@string/rumah_adat"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/btn_pakaian_adat"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/icon_pakaian_adat" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:gravity="center"
+                            android:lineHeight="10dp"
+                            android:text="@string/pakaian_adat"
+                            android:textColor="@color/black"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_adat_pernikahan"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/icon_adat_pernikahan" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:lineHeight="10dp"
+                            android:text="@string/adat_pernikahan"
+                            android:textColor="@color/black"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_tempat_wisata"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/icon_tempat_wisata" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:lineHeight="10dp"
+                            android:text="@string/tempat_wisata"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/btn_musik_tradisional"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/icon_alat_musik" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:gravity="center"
+                            android:lineHeight="10dp"
+                            android:text="@string/musik_tradisional"
+                            android:textColor="@color/black"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_tarian_tradisional"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/icon_tarian_daerah" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:lineHeight="10dp"
+                            android:text="@string/tarian_tradisional"
+                            android:textColor="@color/black"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_info_aplikasi"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/icon_tentang" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:lineHeight="10dp"
+                            android:text="@string/info"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/btn_hot_news"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:lineHeight="10dp"
+                            android:text="@string/hot_news"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_hot_spot"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/rounded_shape"
+                        android:gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:lineHeight="10dp"
+                            android:text="@string/hot_spot"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/btn_log_out"
+                    android:layout_width="320dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_shape"
+                    android:backgroundTint="@color/dark_red"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:lineHeight="10dp"
+                        android:text="@string/log_out"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

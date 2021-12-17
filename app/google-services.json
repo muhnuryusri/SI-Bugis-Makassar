@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "463092243805",
+    "project_id": "bugis-makassar-38423",
+    "storage_bucket": "bugis-makassar-38423.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463092243805:android:81be5621f450c113945cb4",
+        "android_client_info": {
+          "package_name": "com.example.bugismakassar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463092243805-1o6aept5juhu1mvjtedc7epmqodbso98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGWP0tUKYZUIv8AEyjKzbEu5d--R0Gm84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463092243805-1o6aept5juhu1mvjtedc7epmqodbso98.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

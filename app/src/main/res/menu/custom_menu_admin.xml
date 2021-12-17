@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_admin_home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_admin_sejarah_bugis"
+            android:title="@string/sejarah_bugis" />
+        <item
+            android:id="@+id/nav_admin_lontara"
+            android:title="@string/lontara" />
+        <item
+            android:id="@+id/nav_admin_rumah_adat"
+            android:title="@string/rumah_adat" />
+        <item
+            android:id="@+id/nav_admin_pakaian_adat"
+            android:title="@string/pakaian_adat" />
+        <item
+            android:id="@+id/nav_admin_adat_pernikahan"
+            android:title="@string/adat_pernikahan" />
+        <item
+            android:id="@+id/nav_admin_tempat_wisata"
+            android:title="@string/tempat_wisata" />
+        <item
+            android:id="@+id/nav_admin_musik_tradisional"
+            android:title="@string/musik_tradisional" />
+        <item
+            android:id="@+id/nav_admin_tarian_tradisional"
+            android:title="@string/tarian_tradisional" />
+        <item
+            android:id="@+id/nav_admin_info"
+            android:title="@string/info" />
+        <item
+            android:id="@+id/nav_admin_hot_news"
+            android:title="@string/hot_news" />
+        <item
+            android:id="@+id/nav_admin_hot_spot"
+            android:title="@string/hot_spot" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="@string/log_out" />
+    </group>
+</menu>

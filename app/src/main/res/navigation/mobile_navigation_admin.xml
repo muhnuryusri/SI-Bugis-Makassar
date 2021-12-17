@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_admin_home">
+
+    <fragment
+        android:id="@+id/nav_admin_home"
+        android:name="com.example.bugismakassar.admin.fragment.FragmentAdminHome"
+        android:label="Beranda"
+        tools:layout="@layout/fragment_admin_home" >
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_sejarah_bugis"
+            app:destination="@id/nav_admin_sejarah_bugis" />
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_lontara"
+            app:destination="@id/nav_admin_lontara" />
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_rumah_adat"
+            app:destination="@id/nav_admin_rumah_adat" />
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_pakaian_adat"
+            app:destination="@id/nav_admin_pakaian_adat" />
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_adat_pernikahan"
+            app:destination="@id/nav_admin_adat_pernikahan" />
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_tempat_wisata"
+            app:destination="@id/nav_admin_tempat_wisata" />
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_musik_tradisional"
+            app:destination="@id/nav_admin_musik_tradisional" />
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_tarian_tradisional"
+            app:destination="@id/nav_admin_tarian_tradisional" />
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_info"
+            app:destination="@id/nav_admin_info" />
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_hot_news"
+            app:destination="@id/nav_admin_hot_news" />
+        <action
+            android:id="@+id/action_nav_admin_home_to_nav_admin_hot_spot"
+            app:destination="@id/nav_admin_hot_spot" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_sejarah_bugis"
+        android:name="com.example.bugismakassar.admin.fragment.sejarah_bugis.FragmentAdminSejarahBugis"
+        android:label="Sejarah Bugis"
+        tools:layout="@layout/fragment_admin_sejarah_bugis" >
+
+        <action
+            android:id="@+id/action_nav_admin_sejarah_bugis_to_nav_add_article"
+            app:destination="@id/nav_add_article_sejarah_bugis" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_lontara"
+        android:name="com.example.bugismakassar.admin.fragment.lontara.FragmentAdminLontara"
+        android:label="Lontara"
+        tools:layout="@layout/fragment_admin_lontara" >
+
+        <action
+            android:id="@+id/action_nav_admin_lontara_to_nav_add_article"
+            app:destination="@id/nav_add_article_lontara" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_rumah_adat"
+        android:name="com.example.bugismakassar.admin.fragment.rumah_adat.FragmentAdminRumahAdat"
+        android:label="Rumah Adat"
+        tools:layout="@layout/fragment_admin_rumah_adat" >
+
+        <action
+            android:id="@+id/action_nav_admin_rumah_adat_to_nav_add_article"
+            app:destination="@id/nav_add_article_rumah_adat" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_pakaian_adat"
+        android:name="com.example.bugismakassar.admin.fragment.pakaian_adat.FragmentAdminPakaianAdat"
+        android:label="Pakaian Adat"
+        tools:layout="@layout/fragment_admin_pakaian_adat" >
+
+        <action
+            android:id="@+id/action_nav_admin_pakaian_adat_to_nav_add_article"
+            app:destination="@id/nav_add_article_pakaian_adat" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_adat_pernikahan"
+        android:name="com.example.bugismakassar.admin.fragment.adat_pernikahan.FragmentAdminAdatPernikahan"
+        android:label="Adat Pernikahan"
+        tools:layout="@layout/fragment_admin_adat_pernikahan" >
+
+        <action
+            android:id="@+id/action_nav_admin_adat_pernikahan_to_nav_add_article"
+            app:destination="@id/nav_add_article_adat_pernikahan" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_tempat_wisata"
+        android:name="com.example.bugismakassar.admin.fragment.tempat_wisata.FragmentAdminTempatWisata"
+        android:label="Tempat Wisata"
+        tools:layout="@layout/fragment_admin_tempat_wisata" >
+
+        <action
+            android:id="@+id/action_nav_admin_tempat_wisata_to_nav_add_article"
+            app:destination="@id/nav_add_article_tempat_wisata" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_musik_tradisional"
+        android:name="com.example.bugismakassar.admin.fragment.musik_tradisional.FragmentAdminMusikTradisional"
+        android:label="Musik Tradisional"
+        tools:layout="@layout/fragment_admin_musik_tradisional" >
+
+        <action
+            android:id="@+id/action_nav_admin_musik_tradisional_to_nav_add_article"
+            app:destination="@id/nav_add_article_musik_tradisional" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_tarian_tradisional"
+        android:name="com.example.bugismakassar.admin.fragment.tarian_tradisional.FragmentAdminTarianTradisional"
+        android:label="Tarian Tradisional"
+        tools:layout="@layout/fragment_admin_tarian_tradisional" >
+
+        <action
+            android:id="@+id/action_nav_admin_tarian_tradisional_to_nav_add_article"
+            app:destination="@id/nav_add_article_tarian_tradisional" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_info"
+        android:name="com.example.bugismakassar.admin.fragment.FragmentAdminInfo"
+        android:label="Info Aplikasi"
+        tools:layout="@layout/fragment_admin_info" />
+
+    <fragment
+        android:id="@+id/nav_admin_hot_news"
+        android:name="com.example.bugismakassar.admin.fragment.hotnews.FragmentAdminHotNews"
+        android:label="Hot News"
+        tools:layout="@layout/fragment_admin_hot_news">
+
+        <action
+            android:id="@+id/action_nav_admin_hot_news_to_nav_add_content"
+            app:destination="@id/nav_add_content_hotnews" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_hot_spot"
+        android:name="com.example.bugismakassar.admin.fragment.hotspot.FragmentAdminHotSpot"
+        android:label="Hot Spot"
+        tools:layout="@layout/fragment_admin_hot_spot" >
+
+        <action
+            android:id="@+id/action_nav_admin_hot_spot_to_nav_add_content"
+            app:destination="@id/nav_add_content_hotspot" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_add_article_sejarah_bugis"
+        android:name="com.example.bugismakassar.admin.fragment.sejarah_bugis.FragmentAddSejarahBugis"
+        android:label="Tambah Artikel"
+        tools:layout="@layout/fragment_add_sejarah_bugis" />
+
+    <fragment
+        android:id="@+id/nav_add_article_lontara"
+        android:name="com.example.bugismakassar.admin.fragment.lontara.FragmentAddLontara"
+        android:label="Tambah Artikel"
+        tools:layout="@layout/fragment_add_lontara" />
+
+    <fragment
+        android:id="@+id/nav_add_article_rumah_adat"
+        android:name="com.example.bugismakassar.admin.fragment.rumah_adat.FragmentAddRumahAdat"
+        android:label="Tambah Artikel"
+        tools:layout="@layout/fragment_add_rumah_adat" />
+
+    <fragment
+        android:id="@+id/nav_add_article_pakaian_adat"
+        android:name="com.example.bugismakassar.admin.fragment.pakaian_adat.FragmentAddPakaianAdat"
+        android:label="Tambah Artikel"
+        tools:layout="@layout/fragment_add_pakaian_adat" />
+
+    <fragment
+        android:id="@+id/nav_add_article_adat_pernikahan"
+        android:name="com.example.bugismakassar.admin.fragment.adat_pernikahan.FragmentAddAdatPernikahan"
+        android:label="Tambah Artikel"
+        tools:layout="@layout/fragment_add_adat_pernikahan" />
+
+    <fragment
+        android:id="@+id/nav_add_article_tempat_wisata"
+        android:name="com.example.bugismakassar.admin.fragment.tempat_wisata.FragmentAddTempatWisata"
+        android:label="Tambah Artikel"
+        tools:layout="@layout/fragment_add_tempat_wisata" />
+
+    <fragment
+        android:id="@+id/nav_add_article_musik_tradisional"
+        android:name="com.example.bugismakassar.admin.fragment.musik_tradisional.FragmentAddMusikTradisional"
+        android:label="Tambah Artikel"
+        tools:layout="@layout/fragment_add_musik_tradisional" />
+
+    <fragment
+        android:id="@+id/nav_add_article_tarian_tradisional"
+        android:name="com.example.bugismakassar.admin.fragment.tarian_tradisional.FragmentAddTarianTradisional"
+        android:label="Tambah Artikel"
+        tools:layout="@layout/fragment_add_tarian_tradisional" />
+
+    <fragment
+        android:id="@+id/nav_add_content_hotnews"
+        android:name="com.example.bugismakassar.user.fragment.hotnews.FragmentAddHotNews"
+        android:label="Tambah Konten"
+        tools:layout="@layout/fragment_add_hot_news" />
+
+    <fragment
+        android:id="@+id/nav_add_content_hotspot"
+        android:name="com.example.bugismakassar.user.fragment.hotspot.FragmentAddHotSpot"
+        android:label="Tambah Konten"
+        tools:layout="@layout/fragment_add_hot_spot" />
+</navigation>
