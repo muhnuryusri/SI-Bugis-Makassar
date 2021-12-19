@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
                             val userAuth = auth.currentUser
 
                             if (uid != null) {
-                                database.child(uid).push().setValue(user).addOnSuccessListener {
+                                database.child(uid).setValue(user).addOnSuccessListener {
                                     Toast.makeText(this,"Registrasi berhasil",Toast.LENGTH_SHORT).show()
                                     updateUI(userAuth)
                                 }.addOnFailureListener{
