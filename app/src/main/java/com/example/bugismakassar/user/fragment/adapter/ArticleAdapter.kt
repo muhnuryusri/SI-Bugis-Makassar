@@ -14,7 +14,6 @@ import com.example.bugismakassar.R
 import com.example.bugismakassar.data.Article
 import com.example.bugismakassar.databinding.ListItemArticleBinding
 import com.example.bugismakassar.databinding.ListItemArticleWithVideoBinding
-import com.example.bugismakassar.databinding.ListItemContentBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -41,8 +40,6 @@ class ArticleAdapter (private val listArticle: ArrayList<Article>) : RecyclerVie
                 tvTitle.text = article.title
                 com.bumptech.glide.Glide.with(itemView.context)
                     .load(article.media)
-                    .centerCrop()
-                    .apply(RequestOptions().override(520, 300))
                     .into(tvImage)
                 tvSource.text = article.source
                 tvDescription.text = article.description

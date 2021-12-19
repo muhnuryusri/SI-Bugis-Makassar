@@ -1,6 +1,5 @@
 package com.example.bugismakassar.user.fragment.hotnews
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,17 +9,15 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bugismakassar.R
-import com.example.bugismakassar.admin.AdminActivity
-import com.example.bugismakassar.admin.fragment.adapter.EditContentAdapter
+import com.example.bugismakassar.admin.fragment.hotnews.EditHotNewsAdapter
 import com.example.bugismakassar.data.Content
 import com.example.bugismakassar.databinding.FragmentHotNewsBinding
-import com.example.bugismakassar.user.fragment.adapter.ContentAdapter
 import com.google.firebase.database.*
 
 class FragmentHotNews : Fragment() {
     private lateinit var binding : FragmentHotNewsBinding
     private lateinit var database : DatabaseReference
-    private lateinit var adapter: EditContentAdapter
+    private lateinit var adapter: EditHotNewsAdapter
 
     private var listContent = ArrayList<Content>()
 
@@ -39,17 +36,9 @@ class FragmentHotNews : Fragment() {
 
         listContent = arrayListOf<Content>()
 
-        adapter = EditContentAdapter(listContent)
+        adapter = context?.let { EditHotNewsAdapter(it, listContent) } !!
         binding.rvHotNews.layoutManager = LinearLayoutManager(activity)
         binding.rvHotNews.setHasFixedSize(true)
-        adapter.setOnItemClickCallback(object :
-            EditContentAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Content) {
-                val intent = Intent(context, ActivityEditHotNews::class.java)
-                intent.putExtra("title", data.title)
-                startActivity(intent)
-            }
-        })
         binding.progressBar.visibility = View.VISIBLE
 
         database.addValueEventListener(object : ValueEventListener {
@@ -60,7 +49,7 @@ class FragmentHotNews : Fragment() {
                         val content = userSnapshot.getValue(Content::class.java)
                         listContent.add(content!!)
                     }
-                    binding.rvHotNews.adapter = EditContentAdapter(listContent)
+                    binding.rvHotNews.adapter = EditHotNewsAdapter(context!!, listContent)
                 }
             }
 

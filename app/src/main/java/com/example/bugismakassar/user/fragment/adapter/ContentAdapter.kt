@@ -29,8 +29,6 @@ class ContentAdapter (private val listContent: ArrayList<Content>) : RecyclerVie
                 tvTitle.text = content.title
                 com.bumptech.glide.Glide.with(itemView.context)
                     .load(content.media)
-                    .centerCrop()
-                    .apply(RequestOptions().override(520, 300))
                     .into(tvImage)
                 tvDescription.text = content.description
                 tvUploader.text = content.uploader

@@ -8,16 +8,14 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bugismakassar.R
-import com.example.bugismakassar.admin.fragment.adapter.EditArticleAdapter
 import com.example.bugismakassar.data.Article
 import com.example.bugismakassar.databinding.FragmentAdminPakaianAdatBinding
-import com.example.bugismakassar.user.fragment.adapter.ArticleAdapter
 import com.google.firebase.database.*
 
 class FragmentAdminPakaianAdat : Fragment() {
     private lateinit var binding : FragmentAdminPakaianAdatBinding
     private lateinit var database : DatabaseReference
-    private lateinit var adapter: EditArticleAdapter
+    private lateinit var adapter: EditPakaianAdatAdapter
 
     private var listArticle = ArrayList<Article>()
 
@@ -36,7 +34,7 @@ class FragmentAdminPakaianAdat : Fragment() {
 
         listArticle = arrayListOf<Article>()
 
-        adapter = EditArticleAdapter(listArticle)
+        adapter = context?.let { EditPakaianAdatAdapter(it, listArticle) }!!
         adapter.setData(listArticle)
         binding.rvAdminPakaianAdat.layoutManager = LinearLayoutManager(activity)
         binding.rvAdminPakaianAdat.setHasFixedSize(true)
@@ -51,7 +49,7 @@ class FragmentAdminPakaianAdat : Fragment() {
                         val article = userSnapshot.getValue(Article::class.java)
                         listArticle.add(article!!)
                     }
-                    binding.rvAdminPakaianAdat.adapter = ArticleAdapter(listArticle)
+                    binding.rvAdminPakaianAdat.adapter = EditPakaianAdatAdapter(context!!, listArticle)
                 }
             }
 

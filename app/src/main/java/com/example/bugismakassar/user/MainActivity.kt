@@ -22,6 +22,7 @@ import com.example.bugismakassar.user.fragment.FragmentHome
 import com.example.bugismakassar.user.fragment.adapter.ArticleAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity() {
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance().getReference("Users")
+        database = FirebaseDatabase.getInstance().reference.child("Users")
         setSupportActionBar(binding.appBarMain.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -50,25 +51,26 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfig)
         binding.navView.setupWithNavController(navController)
 
-        val name = intent.getStringExtra("EXTRA_NAME")
+        val uid = auth.currentUser?.uid
+        if (uid != null) {
+            database.child(uid).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val userData = snapshot.getValue(User::class.java)
+                        val header = binding.navView.getHeaderView(0)
+                        val navName = header.findViewById<TextView>(R.id.tv_name)
 
-        database.child("user").addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val userData = snapshot.getValue(User::class.java)
-                    val header = binding.navView.getHeaderView(0)
-                    val navName = header.findViewById<TextView>(R.id.tv_name)
-
-                    if (userData != null) {
-                        navName.text = userData.name
-                    };
+                        if (userData != null) {
+                            navName.text = snapshot.child("name").value.toString()
+                        }
+                    }
                 }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
+                override fun onCancelled(error: DatabaseError) {
 
-            }
-        })
+                }
+            })
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

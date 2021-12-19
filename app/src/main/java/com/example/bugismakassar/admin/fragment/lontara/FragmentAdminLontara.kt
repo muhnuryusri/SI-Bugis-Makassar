@@ -8,16 +8,14 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bugismakassar.R
-import com.example.bugismakassar.admin.fragment.adapter.EditArticleAdapter
 import com.example.bugismakassar.data.Article
 import com.example.bugismakassar.databinding.FragmentAdminLontaraBinding
-import com.example.bugismakassar.user.fragment.adapter.ArticleAdapter
 import com.google.firebase.database.*
 
 class FragmentAdminLontara : Fragment() {
     private lateinit var binding : FragmentAdminLontaraBinding
     private lateinit var database : DatabaseReference
-    private lateinit var adapter: EditArticleAdapter
+    private lateinit var adapter: EditLontaraAdapter
 
     private var listArticle = ArrayList<Article>()
 
@@ -36,7 +34,7 @@ class FragmentAdminLontara : Fragment() {
 
         listArticle = arrayListOf<Article>()
 
-        adapter = EditArticleAdapter(listArticle)
+        adapter = context?.let { EditLontaraAdapter(it, listArticle) }!!
         adapter.setData(listArticle)
         binding.rvAdminLontara.layoutManager = LinearLayoutManager(activity)
         binding.rvAdminLontara.setHasFixedSize(true)
@@ -51,7 +49,7 @@ class FragmentAdminLontara : Fragment() {
                         val article = userSnapshot.getValue(Article::class.java)
                         listArticle.add(article!!)
                     }
-                    binding.rvAdminLontara.adapter = ArticleAdapter(listArticle)
+                    binding.rvAdminLontara.adapter = EditLontaraAdapter(context!!, listArticle)
                 }
             }
 

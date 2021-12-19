@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/drawable/rounded_shape.xml" value="0.2755208333333333" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/drawable/rounded_shape_border.xml" value="0.6" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/font/lora_bold.xml" value="0.28958333333333336" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/font/montserrat_bold.xml" value="0.16354166666666667" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/activity_admin.xml" value="0.21842105263157896" />
@@ -60,16 +61,18 @@
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_tarian_tradisional.xml" value="0.21842105263157896" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/fragment_tempat_wisata.xml" value="0.21842105263157896" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_content_with_video.xml" value="0.21842105263157896" />
-        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_article.xml" value="0.264" />
-        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_article_edit.xml" value="0.264" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_article.xml" value="0.4" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_article_edit.xml" value="0.4" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_article_edit_with_video.xml" value="0.264" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_article_with_video.xml" value="0.264" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_content.xml" value="0.264" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_content_edit.xml" value="0.4" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_content_edit_with_video.xml" value="0.21842105263157896" />
-        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_content_with_video.xml" value="0.2" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/list_item_content_with_video.xml" value="0.264" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/nav_header_main.xml" value="0.21842105263157896" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/update_dialog.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/update_dialog_article.xml" value="0.21842105263157896" />
+        <entry key="..\:/Project/BugisMakassar/app/src/main/res/layout/update_dialog_content.xml" value="0.21842105263157896" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/menu/activity_main_drawer.xml" value="0.21842105263157896" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/menu/custom_menu.xml" value="0.264" />
         <entry key="..\:/Project/BugisMakassar/app/src/main/res/menu/custom_menu_admin.xml" value="0.21842105263157896" />

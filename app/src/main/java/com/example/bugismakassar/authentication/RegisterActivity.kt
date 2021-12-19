@@ -26,9 +26,10 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance().getReference("Users")
+        database = FirebaseDatabase.getInstance().reference.child("Users")
 
         binding.btnSignUp.setOnClickListener {
+            val uid = auth.currentUser?.uid
             val name = binding.edtName.text.toString()
             val email = binding.edtEmail.text.toString()
             val username = binding.edtUsername.text.toString()
@@ -37,18 +38,20 @@ class RegisterActivity : AppCompatActivity() {
             if (name.isEmpty() && email.isEmpty() && username.isEmpty() && password.isEmpty()) {
                 Toast.makeText(this@RegisterActivity, "Mohon lengkapi data anda", Toast.LENGTH_SHORT).show()
             } else {
-                val user = User(name, email, username, password)
+                val user = User(uid, name, email, username, password)
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             // Sign in success, update UI with the signed-in user's information
                             val userAuth = auth.currentUser
 
-                            database.child(username).setValue(user).addOnSuccessListener {
-                                Toast.makeText(this,"Registrasi berhasil",Toast.LENGTH_SHORT).show()
-                                updateUI(userAuth)
-                            }.addOnFailureListener{
-                                Toast.makeText(this,"Registrasi gagal",Toast.LENGTH_SHORT).show()
+                            if (uid != null) {
+                                database.child(uid).push().setValue(user).addOnSuccessListener {
+                                    Toast.makeText(this,"Registrasi berhasil",Toast.LENGTH_SHORT).show()
+                                    updateUI(userAuth)
+                                }.addOnFailureListener{
+                                    Toast.makeText(this,"Registrasi gagal",Toast.LENGTH_SHORT).show()
+                                }
                             }
                         } else {
                             // If sign in fails, display a message to the user.

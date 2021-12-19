@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.bugismakassar.R
 import com.example.bugismakassar.admin.AdminActivity
+import com.example.bugismakassar.data.Article
 import com.example.bugismakassar.data.Content
 import com.example.bugismakassar.databinding.FragmentAddPakaianAdatBinding
 import com.example.bugismakassar.databinding.FragmentAddRumahAdatBinding
@@ -74,23 +75,25 @@ class FragmentAddRumahAdat : Fragment() {
     }
 
     private fun saveDataToFirebaseDatabase(profileImageUrl: String) {
-        val title = binding.edtTitle.text.toString()
-        val description = binding.edtDescription.text.toString()
-        val uploader = binding.edtUploader.text.toString()
-        val type = 0
-
         database = FirebaseDatabase.getInstance().reference.child("Rumah Adat")
 
-        val content = Content(title, profileImageUrl, description, uploader, type)
+        val id = database.push().key
+        val title = binding.edtTitle.text.toString()
+        val description = binding.edtDescription.text.toString()
+        val source = binding.edtSource.text.toString()
+        val type = 0
 
-        database.child(title).setValue(content)
-            .addOnSuccessListener {
+        val article = Article(id, title, profileImageUrl, source, description, type)
+
+        if (id != null) {
+            database.child(id).setValue(article).addOnSuccessListener {
                 Toast.makeText(context, "Upload Berhasil", Toast.LENGTH_SHORT).show()
                 val intent = Intent(context, AdminActivity::class.java)
                 startActivity(intent)
             }
-            .addOnFailureListener {
-                Toast.makeText(context,"Upload Gagal", Toast.LENGTH_SHORT).show()
-            }
+                .addOnFailureListener {
+                    Toast.makeText(context,"Upload Gagal", Toast.LENGTH_SHORT).show()
+                }
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.example.bugismakassar.admin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -32,6 +33,11 @@ class AdminActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfig)
         binding.navViewAdmin.setupWithNavController(navController)
+
+        val header = binding.navViewAdmin.getHeaderView(0)
+        val navName = header.findViewById<TextView>(R.id.tv_name)
+
+        navName.setText("Admin")
     }
 
     override fun onSupportNavigateUp(): Boolean {

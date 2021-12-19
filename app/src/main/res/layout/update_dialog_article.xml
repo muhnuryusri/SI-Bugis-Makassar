@@ -4,25 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/yellow">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="Edit Artikel"
-            android:textColor="@color/white"
-            android:textSize="35sp"
-            android:textStyle="bold" />
+        android:orientation="vertical"
+        android:paddingTop="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +19,7 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/montserrat_regular"
             android:text="Judul"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -53,7 +41,7 @@
                 android:id="@+id/edt_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_shape"
+                android:background="@drawable/rounded_shape_border"
                 android:textColor="@color/black"
                 android:fontFamily="@font/montserrat_regular"
                 android:maxLines="1"
@@ -67,24 +55,26 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/montserrat_regular"
             android:text="Media"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
 
         <FrameLayout
             android:id="@+id/btn_upload_media"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:layout_gravity="center"
             android:background="@color/white">
-
 
             <ImageView
                 android:id="@+id/tv_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:background="@drawable/rounded_shape_border"
                 android:src="@drawable/ic_baseline_add_photo_alternate_24" />
         </FrameLayout>
 
@@ -95,7 +85,7 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/montserrat_regular"
             android:text="Sumber"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -114,10 +104,10 @@
             app:errorTextColor="@color/gray">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_uploader"
+                android:id="@+id/edt_source"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_shape"
+                android:background="@drawable/rounded_shape_border"
                 android:textColor="@color/black"
                 android:fontFamily="@font/montserrat_regular"
                 android:maxLines="1"
@@ -180,7 +170,7 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/montserrat_regular"
             android:text="Deskripsi"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -203,7 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top|start"
-                android:background="@drawable/rounded_shape"
+                android:background="@drawable/rounded_shape_border"
                 android:textColor="@color/black"
                 android:fontFamily="@font/montserrat_regular"
                 android:scrollbars="vertical"
@@ -211,19 +201,5 @@
                 android:lines="8"
                 android:inputType="textMultiLine"/>
         </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_update"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/green"
-            android:text="Update"
-            android:fontFamily="@font/montserrat_bold"
-            android:textSize="20sp"
-            android:textAllCaps="false"
-            app:cornerRadius="10dp"/>
     </LinearLayout>
 </ScrollView>

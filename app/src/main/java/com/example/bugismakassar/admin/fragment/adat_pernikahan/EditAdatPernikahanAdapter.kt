@@ -1,22 +1,29 @@
-package com.example.bugismakassar.admin.fragment.adapter
+package com.example.bugismakassar.admin.fragment.adat_pernikahan
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.bugismakassar.R
+import com.example.bugismakassar.admin.AdminActivity
 import com.example.bugismakassar.data.Article
-import com.example.bugismakassar.databinding.ListItemArticleBinding
 import com.example.bugismakassar.databinding.ListItemArticleEditBinding
 import com.example.bugismakassar.databinding.ListItemArticleEditWithVideoBinding
-import com.example.bugismakassar.databinding.ListItemArticleWithVideoBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
-class EditArticleAdapter (private val listArticle: ArrayList<Article>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
+class EditAdatPernikahanAdapter (val context: Context, private val listArticle: ArrayList<Article>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
+    private lateinit var database: DatabaseReference
     private val TYPE_IMAGE: Int = 0
     private val TYPE_VIDEO: Int = 1
 
@@ -33,12 +40,14 @@ class EditArticleAdapter (private val listArticle: ArrayList<Article>) : Recycle
                 tvTitle.text = article.title
                 com.bumptech.glide.Glide.with(itemView.context)
                     .load(article.media)
-                    .centerCrop()
-                    .apply(RequestOptions().override(520, 300))
                     .into(tvImage)
                 tvSource.text = article.source
                 tvDescription.text = article.description
                 editArticle.setOnClickListener {
+                    showUpdateDialog(article)
+                }
+                deleteArticle.setOnClickListener {
+                    showDeleteDialog(article)
                 }
             }
         }
@@ -97,5 +106,78 @@ class EditArticleAdapter (private val listArticle: ArrayList<Article>) : Recycle
         } else {
             TYPE_VIDEO
         }
+    }
+
+    fun showUpdateDialog(article: Article) {
+        val builder = AlertDialog.Builder(context)
+
+        builder.setTitle("Update")
+
+        val inflater = LayoutInflater.from(context)
+
+        val view = inflater.inflate(R.layout.update_dialog_article, null)
+
+        val textTitle = view.findViewById<EditText>(R.id.edt_title)
+        val imgMedia = view.findViewById<ImageView>(R.id.tv_image)
+        val textSource = view.findViewById<EditText>(R.id.edt_source)
+        val textDescription = view.findViewById<EditText>(R.id.edt_description)
+
+        textTitle.setText(article.title)
+        com.bumptech.glide.Glide.with(view.context)
+            .load(article.media)
+            .into(imgMedia)
+        textSource.setText(article.source)
+        textDescription.setText(article.description)
+
+        builder.setView(view)
+
+        builder.setPositiveButton("Update") { dialog, which ->
+
+            database = FirebaseDatabase.getInstance().reference.child("Adat Pernikahan")
+
+            val title = textTitle.text.toString().trim()
+            val source = textSource.text.toString().trim()
+            val description = textDescription.text.toString().trim()
+
+            val article = Article(article.id, title, article.media, source, description, 0)
+
+            article.id?.let {
+                database.child(it).setValue(article).addOnCompleteListener {
+                    Toast.makeText(context,"Updated",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            setData(listArticle)
+
+        }
+
+        builder.setNegativeButton("Batal") { dialog, which ->
+
+        }
+
+        val alert = builder.create()
+        alert.show()
+
+    }
+
+    fun showDeleteDialog(article: Article) {
+        val builder = AlertDialog.Builder(context)
+
+        builder.setTitle("Hapus Artikel")
+        builder.setMessage("Anda yakin ingin menghapus artikel ini?")
+
+        database = FirebaseDatabase.getInstance().reference.child("Adat Pernikahan")
+
+        builder.setPositiveButton("Ya") { dialog, which ->
+            article.id?.let { database.child(it).removeValue() }
+            setData(listArticle)
+        }
+
+        builder.setNegativeButton("Tidak") { dialog, which ->
+
+        }
+
+        val alert = builder.create()
+        alert.show()
     }
 }

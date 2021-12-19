@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.example.bugismakassar.admin.AdminActivity
+import com.example.bugismakassar.data.Article
 import com.example.bugismakassar.databinding.FragmentAddHotNewsBinding
 import com.example.bugismakassar.user.MainActivity
 
@@ -73,23 +74,25 @@ class FragmentAddHotNews : Fragment() {
     }
 
     private fun saveDataToFirebaseDatabase(profileImageUrl: String) {
+        database = FirebaseDatabase.getInstance().reference.child("Hot News")
+
+        val id = database.push().key
         val title = binding.edtTitle.text.toString()
         val description = binding.edtDescription.text.toString()
         val uploader = binding.edtUploader.text.toString()
         val type = 0
 
-        database = FirebaseDatabase.getInstance().reference.child("Hot News")
+        val content = Content(id, title, profileImageUrl, description, uploader, type)
 
-        val content = Content(title, profileImageUrl, description, uploader, type)
-
-        database.child(title).setValue(content)
-            .addOnSuccessListener {
+        if (id != null) {
+            database.child(id).setValue(content).addOnSuccessListener {
                 Toast.makeText(context, "Upload Berhasil", Toast.LENGTH_SHORT).show()
                 val intent = Intent(context, MainActivity::class.java)
                 startActivity(intent)
             }
-            .addOnFailureListener {
-                Toast.makeText(context,"Upload Gagal", Toast.LENGTH_SHORT).show()
-            }
+                .addOnFailureListener {
+                    Toast.makeText(context,"Upload Gagal", Toast.LENGTH_SHORT).show()
+                }
+        }
     }
 }

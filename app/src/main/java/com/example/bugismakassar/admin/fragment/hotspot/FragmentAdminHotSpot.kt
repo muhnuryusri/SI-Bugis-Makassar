@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bugismakassar.R
-import com.example.bugismakassar.admin.fragment.adapter.EditContentAdapter
 import com.example.bugismakassar.data.Content
 import com.example.bugismakassar.databinding.FragmentAdminHotSpotBinding
 import com.google.firebase.database.*
@@ -16,7 +15,7 @@ import com.google.firebase.database.*
 class FragmentAdminHotSpot : Fragment() {
     private lateinit var binding : FragmentAdminHotSpotBinding
     private lateinit var database : DatabaseReference
-    private lateinit var adapter: EditContentAdapter
+    private lateinit var adapter: EditHotSpotAdapter
 
     private var listContent = ArrayList<Content>()
 
@@ -35,7 +34,7 @@ class FragmentAdminHotSpot : Fragment() {
 
         listContent = arrayListOf<Content>()
 
-        adapter = EditContentAdapter(listContent)
+        adapter = context?.let { EditHotSpotAdapter(it, listContent) }!!
         binding.rvAdminHotSpot.layoutManager = LinearLayoutManager(activity)
         binding.rvAdminHotSpot.setHasFixedSize(true)
 
@@ -49,7 +48,7 @@ class FragmentAdminHotSpot : Fragment() {
                         val content = userSnapshot.getValue(Content::class.java)
                         listContent.add(content!!)
                     }
-                    binding.rvAdminHotSpot.adapter = EditContentAdapter(listContent)
+                    binding.rvAdminHotSpot.adapter = EditHotSpotAdapter(context!!, listContent)
                 }
             }
 
