@@ -12,12 +12,13 @@ import com.example.bugismakassar.R
 import com.example.bugismakassar.admin.fragment.hotnews.EditHotNewsAdapter
 import com.example.bugismakassar.data.Content
 import com.example.bugismakassar.databinding.FragmentHotNewsBinding
+import com.example.bugismakassar.user.fragment.adapter.ContentAdapter
 import com.google.firebase.database.*
 
 class FragmentHotNews : Fragment() {
     private lateinit var binding : FragmentHotNewsBinding
     private lateinit var database : DatabaseReference
-    private lateinit var adapter: EditHotNewsAdapter
+    private lateinit var adapter: ContentAdapter
 
     private var listContent = ArrayList<Content>()
 
@@ -36,7 +37,7 @@ class FragmentHotNews : Fragment() {
 
         listContent = arrayListOf<Content>()
 
-        adapter = context?.let { EditHotNewsAdapter(it, listContent) } !!
+        adapter = ContentAdapter(listContent)
         binding.rvHotNews.layoutManager = LinearLayoutManager(activity)
         binding.rvHotNews.setHasFixedSize(true)
         binding.progressBar.visibility = View.VISIBLE
@@ -49,7 +50,7 @@ class FragmentHotNews : Fragment() {
                         val content = userSnapshot.getValue(Content::class.java)
                         listContent.add(content!!)
                     }
-                    binding.rvHotNews.adapter = EditHotNewsAdapter(context!!, listContent)
+                    binding.rvHotNews.adapter = ContentAdapter(listContent)
                 }
             }
 
@@ -58,9 +59,5 @@ class FragmentHotNews : Fragment() {
             }
 
         })
-
-        binding.fab.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_nav_hot_news_to_nav_add_content)
-        }
     }
 }
