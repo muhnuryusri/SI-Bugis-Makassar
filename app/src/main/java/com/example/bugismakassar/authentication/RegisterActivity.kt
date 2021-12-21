@@ -53,6 +53,7 @@ class RegisterActivity : AppCompatActivity() {
                                     Toast.makeText(this,"Registrasi gagal",Toast.LENGTH_SHORT).show()
                                 }
                             }
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(baseContext, "Authentication failed.",

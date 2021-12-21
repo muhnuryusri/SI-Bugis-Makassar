@@ -30,7 +30,7 @@ class FragmentAdminTarianTradisional : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        database = FirebaseDatabase.getInstance().getReference("Tarian Tradisional")
+        database = FirebaseDatabase.getInstance().getReference("Tarian Daerah")
 
         listArticle = arrayListOf<Article>()
 

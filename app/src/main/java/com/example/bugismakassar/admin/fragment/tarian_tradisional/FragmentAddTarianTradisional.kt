@@ -52,7 +52,7 @@ class FragmentAddTarianTradisional : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        database = FirebaseDatabase.getInstance().reference.child("Tarian Tradisional")
+        database = FirebaseDatabase.getInstance().reference.child("Tarian Daerah")
         storage = FirebaseStorage.getInstance().reference.child("image")
         auth = FirebaseAuth.getInstance()
 
@@ -75,7 +75,7 @@ class FragmentAddTarianTradisional : Fragment() {
     }
 
     private fun saveDataToFirebaseDatabase(profileImageUrl: String) {
-        database = FirebaseDatabase.getInstance().reference.child("Tarian Tradisional")
+        database = FirebaseDatabase.getInstance().reference.child("Tarian Daerah")
 
         val id = database.push().key
         val title = binding.edtTitle.text.toString()

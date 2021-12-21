@@ -130,7 +130,7 @@ class EditTarianTradisionalAdapter (val context: Context, private val listArticl
 
         builder.setPositiveButton("Update") { dialog, which ->
 
-            database = FirebaseDatabase.getInstance().reference.child("Tarian Tradisional")
+            database = FirebaseDatabase.getInstance().reference.child("Tarian Daerah")
 
             val title = textTitle.text.toString().trim()
             val source = textSource.text.toString().trim()
@@ -163,7 +163,7 @@ class EditTarianTradisionalAdapter (val context: Context, private val listArticl
         builder.setTitle("Hapus Artikel")
         builder.setMessage("Anda yakin ingin menghapus artikel ini?")
 
-        database = FirebaseDatabase.getInstance().reference.child("Tarian Tradisional")
+        database = FirebaseDatabase.getInstance().reference.child("Tarian Daerah")
 
         builder.setPositiveButton("Ya") { dialog, which ->
             article.id?.let { database.child(it).removeValue() }
