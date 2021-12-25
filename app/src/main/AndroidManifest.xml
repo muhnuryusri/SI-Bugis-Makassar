@@ -15,8 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BugisMakassar">
         <activity
-            android:name=".user.fragment.hotnews.ActivityEditHotNews"
-            android:exported="true" />
+            android:name=".admin.fragment.adat_pernikahan.EditAdatPernikahanActivity"
+            android:exported="true"
+            android:label="@string/title_activity_add_adat_pernikahan"
+            android:theme="@style/Theme.BugisMakassar.NoActionBar" />
         <activity
             android:name=".authentication.AdminLoginActivity"
             android:exported="true" />

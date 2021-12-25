@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.RequestOptions
 import com.example.bugismakassar.R
@@ -20,8 +21,21 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import androidx.core.content.ContextCompat.startActivity
+
+
+
 
 class EditAdatPernikahanAdapter (val context: Context, private val listArticle: ArrayList<Article>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(article: Article)
+    }
 
     private lateinit var database: DatabaseReference
     private val TYPE_IMAGE: Int = 0
@@ -44,7 +58,7 @@ class EditAdatPernikahanAdapter (val context: Context, private val listArticle: 
                 tvSource.text = article.source
                 tvDescription.text = article.description
                 editArticle.setOnClickListener {
-                    showUpdateDialog(article)
+                    onItemClickCallback.onItemClicked(listArticle[adapterPosition])
                 }
                 deleteArticle.setOnClickListener {
                     showDeleteDialog(article)

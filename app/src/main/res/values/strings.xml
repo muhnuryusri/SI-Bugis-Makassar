@@ -11,7 +11,7 @@
     <string name="hello_blank_fragment">Hello, this if Fragment!</string>
 
     <string name="home">Beranda</string>
-    <string name="sejarah_bugis">Sejarah Bugis</string>
+    <string name="sejarah_bugis">Sejarah Bugis-Makassar</string>
     <string name="lontara">Lontara</string>
     <string name="rumah_adat">Rumah Adat</string>
     <string name="pakaian_adat">Pakaian Adat</string>
@@ -25,4 +25,13 @@
     <string name="log_out">Log Out</string>
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id lectus viverra ligula imperdiet cursus. Praesent porta faucibus lorem lobortis pulvinar. Mauris feugiat dui sed interdum accumsan. Donec faucibus velit ac dolor finibus, id egestas orci egestas. Vestibulum non dictum augue, in egestas magna. Duis pharetra turpis at fermentum luctus. Praesent ut nisl mauris. Donec tincidunt interdum gravida.</string>
+    <string name="title_activity_add_adat_pernikahan">AddAdatPernikahanActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

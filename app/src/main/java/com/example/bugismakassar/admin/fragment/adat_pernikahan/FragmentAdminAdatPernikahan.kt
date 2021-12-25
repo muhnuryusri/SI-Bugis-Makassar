@@ -1,5 +1,6 @@
 package com.example.bugismakassar.admin.fragment.adat_pernikahan
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -40,6 +41,14 @@ class FragmentAdminAdatPernikahan : Fragment() {
         binding.rvAdatPernikahan.setHasFixedSize(true)
 
         binding.progressBar.visibility = View.VISIBLE
+        adapter.setOnItemClickCallback(object :
+            EditAdatPernikahanAdapter.OnItemClickCallback {
+            override fun onItemClicked(article: Article) {
+                val intent = Intent(activity, EditAdatPernikahanActivity::class.java)
+                intent.putExtra(EditAdatPernikahanActivity.EXTRA_ARTICLE, article)
+                startActivity(intent)
+            }
+        })
 
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
