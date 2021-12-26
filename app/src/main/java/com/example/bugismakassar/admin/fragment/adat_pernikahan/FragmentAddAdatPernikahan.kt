@@ -52,7 +52,7 @@ class FragmentAddAdatPernikahan : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         database = FirebaseDatabase.getInstance().reference.child("Adat Pernikahan")
-        storage = FirebaseStorage.getInstance().reference.child("image")
+        storage = FirebaseStorage.getInstance().getReference("image").child("IMG"+System.currentTimeMillis())
         auth = FirebaseAuth.getInstance()
 
         binding.btnUploadMedia.setOnClickListener {
