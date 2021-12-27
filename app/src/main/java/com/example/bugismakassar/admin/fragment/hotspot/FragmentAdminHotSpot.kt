@@ -48,7 +48,7 @@ class FragmentAdminHotSpot : Fragment() {
                         val content = userSnapshot.getValue(Content::class.java)
                         listContent.add(content!!)
                     }
-                    binding.rvAdminHotSpot.adapter = EditHotSpotAdapter(context!!, listContent)
+                    binding.rvAdminHotSpot.adapter = EditHotSpotAdapter(context, listContent)
                 }
             }
 

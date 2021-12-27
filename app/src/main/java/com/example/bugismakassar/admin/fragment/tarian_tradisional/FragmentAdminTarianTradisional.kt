@@ -49,7 +49,7 @@ class FragmentAdminTarianTradisional : Fragment() {
                         val article = userSnapshot.getValue(Article::class.java)
                         listArticle.add(article!!)
                     }
-                    binding.rvAdminTarianTradisional.adapter = EditTarianTradisionalAdapter(context!!, listArticle)
+                    binding.rvAdminTarianTradisional.adapter = EditTarianTradisionalAdapter(context, listArticle)
                 }
             }
 

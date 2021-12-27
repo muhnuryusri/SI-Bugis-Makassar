@@ -49,7 +49,7 @@ class FragmentAdminTempatWisata : Fragment() {
                         val article = userSnapshot.getValue(Article::class.java)
                         listArticle.add(article!!)
                     }
-                    binding.rvAdminTempatWisata.adapter = EditTempatWisataAdapter(context!!, listArticle)
+                    binding.rvAdminTempatWisata.adapter = EditTempatWisataAdapter(context, listArticle)
                 }
             }
 

@@ -2,6 +2,7 @@ package com.example.bugismakassar.admin.fragment.hotnews
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
@@ -10,18 +11,20 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.RequestOptions
 import com.example.bugismakassar.R
+import com.example.bugismakassar.admin.fragment.adat_pernikahan.EditAdatPernikahanActivity
 import com.example.bugismakassar.data.Article
 import com.example.bugismakassar.data.Content
 import com.example.bugismakassar.databinding.ListItemArticleEditBinding
 import com.example.bugismakassar.databinding.ListItemArticleEditWithVideoBinding
 import com.example.bugismakassar.databinding.ListItemContentEditBinding
 import com.example.bugismakassar.databinding.ListItemContentEditWithVideoBinding
+import com.example.bugismakassar.user.fragment.hotnews.EditHotNewsActivity
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class EditHotNewsAdapter (val context: Context, private val listContent: ArrayList<Content>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
+class EditHotNewsAdapter (val context: Context?, private val listContent: ArrayList<Content>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
     private lateinit var database: DatabaseReference
     private val TYPE_IMAGE: Int = 0
@@ -43,12 +46,16 @@ class EditHotNewsAdapter (val context: Context, private val listContent: ArrayLi
                     .into(tvImage)
                 tvDescription.text = content.description
                 tvUploader.text = content.uploader
-                editContent.setOnClickListener {
-                    showUpdateDialog(content)
-                }
                 deleteContent.setOnClickListener {
                     showDeleteDialog(content)
                 }
+            }
+        }
+        init {
+            binding.editContent.setOnClickListener {
+                val intent = Intent(context, EditHotNewsActivity::class.java)
+                intent.putExtra(EditHotNewsActivity.EXTRA_CONTENT, listContent.get(position))
+                context?.startActivity(intent)
             }
         }
     }
@@ -72,6 +79,16 @@ class EditHotNewsAdapter (val context: Context, private val listContent: ArrayLi
                 exoPlayer.play()
                 tvDescription.text = content.description
                 tvUploader.text = content.uploader
+                deleteContent.setOnClickListener {
+                    showDeleteDialog(content)
+                }
+            }
+        }
+        init {
+            binding.editContent.setOnClickListener {
+                val intent = Intent(context, EditHotNewsActivity::class.java)
+                intent.putExtra(EditHotNewsActivity.EXTRA_CONTENT, listContent.get(position))
+                context?.startActivity(intent)
             }
         }
 
@@ -106,58 +123,6 @@ class EditHotNewsAdapter (val context: Context, private val listContent: ArrayLi
         } else {
             TYPE_VIDEO
         }
-    }
-
-    fun showUpdateDialog(content: Content) {
-        val builder = AlertDialog.Builder(context)
-
-        builder.setTitle("Update")
-
-        val inflater = LayoutInflater.from(context)
-
-        val view = inflater.inflate(R.layout.update_dialog_content, null)
-
-        val textTitle = view.findViewById<EditText>(R.id.edt_title)
-        val imgMedia = view.findViewById<ImageView>(R.id.tv_image)
-        val textDescription = view.findViewById<EditText>(R.id.edt_description)
-        val textUploader = view.findViewById<EditText>(R.id.edt_uploader)
-
-        textTitle.setText(content.title)
-        com.bumptech.glide.Glide.with(view.context)
-            .load(content.media)
-            .into(imgMedia)
-        textUploader.setText(content.uploader)
-        textDescription.setText(content.description)
-
-        builder.setView(view)
-
-        builder.setPositiveButton("Update") { dialog, which ->
-
-            database = FirebaseDatabase.getInstance().reference.child("Hot News")
-
-            val title = textTitle.text.toString().trim()
-            val description = textDescription.text.toString().trim()
-            val uploader = textUploader.text.toString().trim()
-
-            val content = Content(content.id, title, content.media, description, uploader, 0)
-
-            content.id?.let {
-                database.child(it).setValue(content).addOnCompleteListener {
-                    Toast.makeText(context,"Updated",Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            setData(listContent)
-
-        }
-
-        builder.setNegativeButton("Batal") { dialog, which ->
-
-        }
-
-        val alert = builder.create()
-        alert.show()
-
     }
 
     fun showDeleteDialog(content: Content) {

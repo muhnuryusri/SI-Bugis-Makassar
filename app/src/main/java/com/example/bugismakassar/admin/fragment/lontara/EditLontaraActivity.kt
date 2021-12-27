@@ -1,38 +1,39 @@
-package com.example.bugismakassar.admin.fragment.adat_pernikahan
+package com.example.bugismakassar.admin.fragment.lontara
 
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageView
+import android.view.View
 import android.widget.Toast
-import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.bugismakassar.R
 import com.example.bugismakassar.admin.AdminActivity
 import com.example.bugismakassar.data.Article
-import com.example.bugismakassar.data.User
 import com.example.bugismakassar.databinding.ActivityEditAdatPernikahanBinding
+import com.example.bugismakassar.databinding.ActivityEditLontaraBinding
+import com.example.bugismakassar.databinding.FragmentAddHotSpotBinding
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class EditAdatPernikahanActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityEditAdatPernikahanBinding
+class EditLontaraActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityEditLontaraBinding
     private lateinit var database: DatabaseReference
     private lateinit var storage: StorageReference
+
     private var mediaData: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditAdatPernikahanBinding.inflate(layoutInflater)
+        binding = ActivityEditLontaraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        database = FirebaseDatabase.getInstance().reference.child("Adat Pernikahan")
+        database = FirebaseDatabase.getInstance().reference.child("Lontara")
         storage = FirebaseStorage.getInstance().reference.child("image")
 
         val editArticle = intent.getParcelableExtra<Article>(EXTRA_ARTICLE)
@@ -47,6 +48,7 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
         }
 
         binding.btnUpdate.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             mediaData?.let { it1 ->
                 storage.putFile(it1).addOnSuccessListener(OnSuccessListener { taskSnapshot ->
                     storage.downloadUrl.addOnSuccessListener {
@@ -54,7 +56,7 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
                             updateDataToFirebaseDatabase(it.toString(), editArticle)
                         }
                     }
-                    Toast.makeText(this@EditAdatPernikahanActivity,"Update Berhasil", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@EditLontaraActivity,"Update Berhasil", Toast.LENGTH_SHORT).show()
                 })
             }
         }
@@ -81,7 +83,8 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
     }
 
     private fun updateDataToFirebaseDatabase(profileImageUrl: String, article: Article) {
-        database = FirebaseDatabase.getInstance().reference.child("Adat Pernikahan")
+        database = FirebaseDatabase.getInstance().reference.child("Lontara")
+
         val title = binding.edtTitle.text.toString().trim()
         val source = binding.edtSource.text.toString().trim()
         val description = binding.edtDescription.text.toString().trim()
@@ -90,11 +93,13 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
 
         article.id?.let {
             database.child(it).setValue(articleData).addOnSuccessListener {
-                Toast.makeText(this@EditAdatPernikahanActivity, "Update Berhasil", Toast.LENGTH_SHORT).show()
-                finish()
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(this@EditLontaraActivity, "Update Berhasil", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@EditLontaraActivity, AdminActivity::class.java)
+                startActivity(intent)
             }
                 .addOnFailureListener {
-                    Toast.makeText(this@EditAdatPernikahanActivity,"Update Gagal", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@EditLontaraActivity,"Update Gagal", Toast.LENGTH_SHORT).show()
                 }
         }
     }

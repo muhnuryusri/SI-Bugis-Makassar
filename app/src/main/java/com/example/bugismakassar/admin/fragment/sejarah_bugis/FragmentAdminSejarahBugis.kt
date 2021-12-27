@@ -49,7 +49,7 @@ class FragmentAdminSejarahBugis : Fragment() {
                         val article = userSnapshot.getValue(Article::class.java)
                         listArticle.add(article!!)
                     }
-                    binding.rvAdminSejarahBugis.adapter = EditSejarahBugisAdapter(context!!, listArticle)
+                    binding.rvAdminSejarahBugis.adapter = EditSejarahBugisAdapter(context, listArticle)
                 }
             }
 

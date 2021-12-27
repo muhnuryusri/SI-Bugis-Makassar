@@ -1,6 +1,5 @@
 package com.example.bugismakassar.admin.fragment.adat_pernikahan
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -50,7 +49,7 @@ class FragmentAdminAdatPernikahan : Fragment() {
                         val article = userSnapshot.getValue(Article::class.java)
                         listArticle.add(article!!)
                     }
-                    binding.rvAdatPernikahan.adapter = EditAdatPernikahanAdapter(context!!, listArticle)
+                    binding.rvAdatPernikahan.adapter = EditAdatPernikahanAdapter(context, listArticle)
                 }
             }
 

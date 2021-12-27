@@ -36,6 +36,7 @@ class FragmentAdminLontara : Fragment() {
 
         adapter = context?.let { EditLontaraAdapter(it, listArticle) }!!
         adapter.setData(listArticle)
+        adapter.notifyDataSetChanged()
         binding.rvAdminLontara.layoutManager = LinearLayoutManager(activity)
         binding.rvAdminLontara.setHasFixedSize(true)
 
@@ -49,7 +50,7 @@ class FragmentAdminLontara : Fragment() {
                         val article = userSnapshot.getValue(Article::class.java)
                         listArticle.add(article!!)
                     }
-                    binding.rvAdminLontara.adapter = EditLontaraAdapter(context!!, listArticle)
+                    binding.rvAdminLontara.adapter = EditLontaraAdapter(context, listArticle)
                 }
             }
 

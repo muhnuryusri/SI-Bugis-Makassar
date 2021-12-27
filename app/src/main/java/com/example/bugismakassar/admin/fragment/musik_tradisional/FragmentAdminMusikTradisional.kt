@@ -49,7 +49,7 @@ class FragmentAdminMusikTradisional : Fragment() {
                         val article = userSnapshot.getValue(Article::class.java)
                         listArticle.add(article!!)
                     }
-                    binding.rvAdminMusikTradisional.adapter = EditMusikTradisionalAdapter(context!!, listArticle)
+                    binding.rvAdminMusikTradisional.adapter = EditMusikTradisionalAdapter(context, listArticle)
                 }
             }
 

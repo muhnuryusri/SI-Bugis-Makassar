@@ -49,7 +49,7 @@ class FragmentAdminRumahAdat : Fragment() {
                         val article = userSnapshot.getValue(Article::class.java)
                         listArticle.add(article!!)
                     }
-                    binding.rvAdminRumahAdat.adapter = EditRumahAdatAdapter(context!!, listArticle)
+                    binding.rvAdminRumahAdat.adapter = EditRumahAdatAdapter(context, listArticle)
                 }
             }
 

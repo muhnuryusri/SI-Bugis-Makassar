@@ -2,6 +2,7 @@ package com.example.bugismakassar.admin.fragment.lontara
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.RequestOptions
 import com.example.bugismakassar.R
+import com.example.bugismakassar.admin.fragment.adat_pernikahan.EditAdatPernikahanActivity
 import com.example.bugismakassar.data.Article
 import com.example.bugismakassar.databinding.ListItemArticleEditBinding
 import com.example.bugismakassar.databinding.ListItemArticleEditWithVideoBinding
@@ -18,7 +20,7 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class EditLontaraAdapter (val context: Context, private val listArticle: ArrayList<Article>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
+class EditLontaraAdapter (val context: Context?, private val listArticle: ArrayList<Article>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
     private lateinit var database: DatabaseReference
     private val TYPE_IMAGE: Int = 0
@@ -27,7 +29,7 @@ class EditLontaraAdapter (val context: Context, private val listArticle: ArrayLi
     fun setData(data: List<Article>) {
         listArticle.clear()
         listArticle.addAll(data)
-        this.notifyItemChanged(0)
+        this.notifyDataSetChanged()
     }
 
     private inner class ImageViewHolder(private val binding: ListItemArticleEditBinding): RecyclerView.ViewHolder(binding.root) {
@@ -40,12 +42,16 @@ class EditLontaraAdapter (val context: Context, private val listArticle: ArrayLi
                     .into(tvImage)
                 tvSource.text = article.source
                 tvDescription.text = article.description
-                editArticle.setOnClickListener {
-                    showUpdateDialog(article)
-                }
                 deleteArticle.setOnClickListener {
                     showDeleteDialog(article)
                 }
+            }
+        }
+        init {
+            binding.editArticle.setOnClickListener {
+                val intent = Intent(context, EditLontaraActivity::class.java)
+                intent.putExtra(EditLontaraActivity.EXTRA_ARTICLE, listArticle.get(position))
+                context?.startActivity(intent)
             }
         }
     }
@@ -103,58 +109,6 @@ class EditLontaraAdapter (val context: Context, private val listArticle: ArrayLi
         } else {
             TYPE_VIDEO
         }
-    }
-
-    fun showUpdateDialog(article: Article) {
-        val builder = AlertDialog.Builder(context)
-
-        builder.setTitle("Update")
-
-        val inflater = LayoutInflater.from(context)
-
-        val view = inflater.inflate(R.layout.update_dialog_article, null)
-
-        val textTitle = view.findViewById<EditText>(R.id.edt_title)
-        val imgMedia = view.findViewById<ImageView>(R.id.tv_image)
-        val textSource = view.findViewById<EditText>(R.id.edt_source)
-        val textDescription = view.findViewById<EditText>(R.id.edt_description)
-
-        textTitle.setText(article.title)
-        com.bumptech.glide.Glide.with(view.context)
-            .load(article.media)
-            .into(imgMedia)
-        textSource.setText(article.source)
-        textDescription.setText(article.description)
-
-        builder.setView(view)
-
-        builder.setPositiveButton("Update") { dialog, which ->
-
-            database = FirebaseDatabase.getInstance().reference.child("Lontara")
-
-            val title = textTitle.text.toString().trim()
-            val source = textSource.text.toString().trim()
-            val description = textDescription.text.toString().trim()
-
-            val article = Article(article.id, title, article.media, source, description, 0)
-
-            article.id?.let {
-                database.child(it).setValue(article).addOnCompleteListener {
-                    Toast.makeText(context,"Updated",Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            setData(listArticle)
-
-        }
-
-        builder.setNegativeButton("Batal") { dialog, which ->
-
-        }
-
-        val alert = builder.create()
-        alert.show()
-
     }
 
     fun showDeleteDialog(article: Article) {

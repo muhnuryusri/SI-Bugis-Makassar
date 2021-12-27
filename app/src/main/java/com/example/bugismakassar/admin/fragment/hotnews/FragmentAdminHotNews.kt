@@ -48,7 +48,7 @@ class FragmentAdminHotNews : Fragment() {
                         val content = userSnapshot.getValue(Content::class.java)
                         listContent.add(content!!)
                     }
-                    binding.rvAdminHotNews.adapter = EditHotNewsAdapter(context!!, listContent)
+                    binding.rvAdminHotNews.adapter = EditHotNewsAdapter(context, listContent)
                 }
             }
 

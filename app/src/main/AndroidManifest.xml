@@ -15,6 +15,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BugisMakassar">
         <activity
+            android:name=".admin.fragment.tarian_tradisional.EditTarianTradisionalActivity"
+            android:exported="true" />
+        <activity
+            android:name=".admin.fragment.sejarah_bugis.EditSejarahBugisActivity"
+            android:exported="true" />
+        <activity
+            android:name=".admin.fragment.rumah_adat.EditRumahAdatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".admin.fragment.pakaian_adat.EditPakaianAdatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".admin.fragment.musik_tradisional.EditMusikTradisionalActivity"
+            android:exported="true" />
+        <activity
+            android:name=".user.fragment.hotspot.EditHotSpotActivity"
+            android:exported="true" />
+        <activity
+            android:name=".user.fragment.hotnews.EditHotNewsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".admin.fragment.lontara.EditLontaraActivity"
+            android:exported="true" />
+        <activity
             android:name=".admin.fragment.adat_pernikahan.EditAdatPernikahanActivity"
             android:exported="true"
             android:label="@string/title_activity_add_adat_pernikahan"
@@ -23,7 +47,7 @@
             android:name=".authentication.AdminLoginActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".authentication.LoginActivity"
             android:exported="true" />
         <activity
             android:name=".user.SejarahBugisActivity"
@@ -38,7 +62,7 @@
             android:name=".admin.AdminActivity"
             android:exported="true" />
         <activity
-            android:name=".authentication.LoginActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

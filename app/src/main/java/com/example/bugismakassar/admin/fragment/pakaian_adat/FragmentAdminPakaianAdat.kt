@@ -49,7 +49,7 @@ class FragmentAdminPakaianAdat : Fragment() {
                         val article = userSnapshot.getValue(Article::class.java)
                         listArticle.add(article!!)
                     }
-                    binding.rvAdminPakaianAdat.adapter = EditPakaianAdatAdapter(context!!, listArticle)
+                    binding.rvAdminPakaianAdat.adapter = EditPakaianAdatAdapter(context, listArticle)
                 }
             }
 
