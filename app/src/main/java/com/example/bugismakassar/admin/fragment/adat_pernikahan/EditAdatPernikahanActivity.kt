@@ -91,7 +91,8 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
         article.id?.let {
             database.child(it).setValue(articleData).addOnSuccessListener {
                 Toast.makeText(this@EditAdatPernikahanActivity, "Update Berhasil", Toast.LENGTH_SHORT).show()
-                finish()
+                val intent = Intent(this@EditAdatPernikahanActivity, AdminActivity::class.java)
+                startActivity(intent)
             }
                 .addOnFailureListener {
                     Toast.makeText(this@EditAdatPernikahanActivity,"Update Gagal", Toast.LENGTH_SHORT).show()
