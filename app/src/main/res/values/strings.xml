@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bugis Makassar</string>
+    <string name="app_name">Sistem Informasi Adat dan Budaya Bugis Makassar</string>
     <string name="title_activity_info">InfoActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
