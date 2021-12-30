@@ -5,10 +5,13 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.bugismakassar.admin.AdminActivity
 import com.example.bugismakassar.data.Content
 import com.example.bugismakassar.databinding.ActivityEditHotNewsBinding
+import com.example.bugismakassar.user.MainActivity
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -41,6 +44,7 @@ class EditHotNewsActivity : AppCompatActivity() {
         }
 
         binding.btnUpdate.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             mediaData?.let { it1 ->
                 storage.putFile(it1).addOnSuccessListener(OnSuccessListener { taskSnapshot ->
                     storage.downloadUrl.addOnSuccessListener {
@@ -84,8 +88,10 @@ class EditHotNewsActivity : AppCompatActivity() {
 
         content.id?.let {
             database.child(it).setValue(contentData).addOnSuccessListener {
+                binding.progressBar.visibility = View.GONE
                 Toast.makeText(this@EditHotNewsActivity, "Update Berhasil", Toast.LENGTH_SHORT).show()
-                finish()
+                val intent = Intent(this@EditHotNewsActivity, MainActivity::class.java)
+                startActivity(intent)
             }
                 .addOnFailureListener {
                     Toast.makeText(this@EditHotNewsActivity,"Update Gagal", Toast.LENGTH_SHORT).show()

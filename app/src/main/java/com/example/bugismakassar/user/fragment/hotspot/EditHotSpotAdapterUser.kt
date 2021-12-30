@@ -1,4 +1,4 @@
-package com.example.bugismakassar.admin.fragment.hotspot
+package com.example.bugismakassar.user.fragment.hotspot
 
 import android.app.AlertDialog
 import android.content.Context
@@ -22,7 +22,7 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class EditHotSpotAdapter (val context: Context?, private val listContent: ArrayList<Content>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
+class EditHotSpotAdapterUser (val context: Context?, private val listContent: ArrayList<Content>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
     private lateinit var database: DatabaseReference
     private val TYPE_IMAGE: Int = 0
@@ -51,8 +51,8 @@ class EditHotSpotAdapter (val context: Context?, private val listContent: ArrayL
         }
         init {
             binding.editContent.setOnClickListener {
-                val intent = Intent(context, EditHotSpotAdminActivity::class.java)
-                intent.putExtra(EditHotSpotAdminActivity.EXTRA_CONTENT, listContent.get(position))
+                val intent = Intent(context, EditHotSpotActivity::class.java)
+                intent.putExtra(EditHotSpotActivity.EXTRA_CONTENT, listContent.get(position))
                 context?.startActivity(intent)
             }
         }
@@ -84,8 +84,8 @@ class EditHotSpotAdapter (val context: Context?, private val listContent: ArrayL
         }
         init {
             binding.editContent.setOnClickListener {
-                val intent = Intent(context, EditHotSpotAdminActivity::class.java)
-                intent.putExtra(EditHotSpotAdminActivity.EXTRA_CONTENT, listContent.get(position))
+                val intent = Intent(context, EditHotSpotActivity::class.java)
+                intent.putExtra(EditHotSpotActivity.EXTRA_CONTENT, listContent.get(position))
                 context?.startActivity(intent)
             }
         }

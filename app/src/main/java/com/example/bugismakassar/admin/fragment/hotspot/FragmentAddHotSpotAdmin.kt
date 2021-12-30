@@ -1,6 +1,6 @@
-package com.example.bugismakassar.user.fragment.hotnews
+package com.example.bugismakassar.admin.fragment.hotspot
 
-import android.app.Activity.RESULT_OK
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -9,20 +9,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.bugismakassar.R
+import com.example.bugismakassar.admin.AdminActivity
 import com.example.bugismakassar.data.Content
+import com.example.bugismakassar.databinding.FragmentAddHotSpotAdminBinding
+import com.example.bugismakassar.databinding.FragmentAddHotSpotBinding
+import com.example.bugismakassar.user.MainActivity
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.example.bugismakassar.admin.AdminActivity
-import com.example.bugismakassar.data.Article
-import com.example.bugismakassar.databinding.FragmentAddHotNewsBinding
-import com.example.bugismakassar.user.MainActivity
 
-class FragmentAddHotNews : Fragment() {
-    private lateinit var binding : FragmentAddHotNewsBinding
+class FragmentAddHotSpotAdmin : Fragment() {
+    private lateinit var binding : FragmentAddHotSpotAdminBinding
     private lateinit var database: DatabaseReference
     private lateinit var storage: StorageReference
     private lateinit var auth: FirebaseAuth
@@ -33,7 +34,7 @@ class FragmentAddHotNews : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAddHotNewsBinding.inflate(layoutInflater)
+        binding = FragmentAddHotSpotAdminBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -41,7 +42,7 @@ class FragmentAddHotNews : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
+            if (resultCode == Activity.RESULT_OK) {
                 mediaData = data?.data
                 binding.tvImage.setImageURI(mediaData)
             }
@@ -51,7 +52,7 @@ class FragmentAddHotNews : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        database = FirebaseDatabase.getInstance().reference.child("Hot News")
+        database = FirebaseDatabase.getInstance().reference.child("Hot Spot")
         storage = FirebaseStorage.getInstance().getReference("image").child("IMG"+System.currentTimeMillis())
         auth = FirebaseAuth.getInstance()
 
@@ -74,7 +75,7 @@ class FragmentAddHotNews : Fragment() {
     }
 
     private fun saveDataToFirebaseDatabase(profileImageUrl: String) {
-        database = FirebaseDatabase.getInstance().reference.child("Hot News")
+        database = FirebaseDatabase.getInstance().reference.child("Hot Spot")
 
         val id = database.push().key
         val title = binding.edtTitle.text.toString()
@@ -87,7 +88,7 @@ class FragmentAddHotNews : Fragment() {
         if (id != null) {
             database.child(id).setValue(content).addOnSuccessListener {
                 Toast.makeText(context, "Upload Berhasil", Toast.LENGTH_SHORT).show()
-                val intent = Intent(context, MainActivity::class.java)
+                val intent = Intent(context, AdminActivity::class.java)
                 startActivity(intent)
             }
                 .addOnFailureListener {

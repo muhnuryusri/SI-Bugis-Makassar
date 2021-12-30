@@ -211,13 +211,13 @@
 
     <fragment
         android:id="@+id/nav_add_content_hotnews"
-        android:name="com.example.bugismakassar.user.fragment.hotnews.FragmentAddHotNews"
+        android:name="com.example.bugismakassar.admin.fragment.hotnews.FragmentAddHotNews"
         android:label="Tambah Konten"
         tools:layout="@layout/fragment_add_hot_news" />
 
     <fragment
         android:id="@+id/nav_add_content_hotspot"
-        android:name="com.example.bugismakassar.user.fragment.hotspot.FragmentAddHotSpot"
+        android:name="com.example.bugismakassar.admin.fragment.hotspot.FragmentAddHotSpotAdmin"
         android:label="Tambah Konten"
-        tools:layout="@layout/fragment_add_hot_spot" />
+        tools:layout="@layout/fragment_add_hot_spot_admin" />
 </navigation>

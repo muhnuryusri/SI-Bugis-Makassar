@@ -17,7 +17,7 @@ import com.google.firebase.database.*
 class FragmentHotSpot : Fragment() {
     private lateinit var binding : FragmentHotSpotBinding
     private lateinit var database : DatabaseReference
-    private lateinit var adapter: EditHotSpotAdapter
+    private lateinit var adapter: EditHotSpotAdapterUser
 
     private var listContent = ArrayList<Content>()
 
@@ -36,7 +36,7 @@ class FragmentHotSpot : Fragment() {
 
         listContent = arrayListOf<Content>()
 
-        adapter = context?.let { EditHotSpotAdapter(it, listContent) } !!
+        adapter = context?.let { EditHotSpotAdapterUser(it, listContent) } !!
         binding.rvHotSpot.layoutManager = LinearLayoutManager(activity)
         binding.rvHotSpot.setHasFixedSize(true)
 
@@ -50,7 +50,7 @@ class FragmentHotSpot : Fragment() {
                         val content = userSnapshot.getValue(Content::class.java)
                         listContent.add(content!!)
                     }
-                    binding.rvHotSpot.adapter = EditHotSpotAdapter(context!!, listContent)
+                    binding.rvHotSpot.adapter = EditHotSpotAdapterUser(context, listContent)
                 }
             }
 

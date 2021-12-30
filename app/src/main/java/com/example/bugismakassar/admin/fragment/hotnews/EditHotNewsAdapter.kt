@@ -53,8 +53,8 @@ class EditHotNewsAdapter (val context: Context?, private val listContent: ArrayL
         }
         init {
             binding.editContent.setOnClickListener {
-                val intent = Intent(context, EditHotNewsActivity::class.java)
-                intent.putExtra(EditHotNewsActivity.EXTRA_CONTENT, listContent.get(position))
+                val intent = Intent(context, EditHotNewsAdminActivity::class.java)
+                intent.putExtra(EditHotNewsAdminActivity.EXTRA_CONTENT, listContent.get(position))
                 context?.startActivity(intent)
             }
         }
@@ -86,8 +86,8 @@ class EditHotNewsAdapter (val context: Context?, private val listContent: ArrayL
         }
         init {
             binding.editContent.setOnClickListener {
-                val intent = Intent(context, EditHotNewsActivity::class.java)
-                intent.putExtra(EditHotNewsActivity.EXTRA_CONTENT, listContent.get(position))
+                val intent = Intent(context, EditHotNewsAdminActivity::class.java)
+                intent.putExtra(EditHotNewsAdminActivity.EXTRA_CONTENT, listContent.get(position))
                 context?.startActivity(intent)
             }
         }

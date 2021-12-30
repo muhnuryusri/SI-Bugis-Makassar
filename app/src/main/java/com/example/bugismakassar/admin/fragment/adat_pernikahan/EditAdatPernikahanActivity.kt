@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -47,6 +48,7 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
         }
 
         binding.btnUpdate.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             mediaData?.let { it1 ->
                 storage.putFile(it1).addOnSuccessListener(OnSuccessListener { taskSnapshot ->
                     storage.downloadUrl.addOnSuccessListener {
@@ -90,6 +92,7 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
 
         article.id?.let {
             database.child(it).setValue(articleData).addOnSuccessListener {
+                binding.progressBar.visibility = View.GONE
                 Toast.makeText(this@EditAdatPernikahanActivity, "Update Berhasil", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@EditAdatPernikahanActivity, AdminActivity::class.java)
                 startActivity(intent)
