@@ -30,7 +30,7 @@ class EditHotSpotAdminActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         database = FirebaseDatabase.getInstance().reference.child("Hot Spot")
-        storage = FirebaseStorage.getInstance().reference.child("image")
+        storage = FirebaseStorage.getInstance().reference.child("image").child("IMG"+System.currentTimeMillis())
 
         val editContent = intent.getParcelableExtra<Content>(EXTRA_CONTENT)
         if (editContent != null) {
@@ -44,16 +44,24 @@ class EditHotSpotAdminActivity : AppCompatActivity() {
         }
 
         binding.btnUpdate.setOnClickListener {
-            binding.progressBar.visibility = View.VISIBLE
-            mediaData?.let { it1 ->
-                storage.putFile(it1).addOnSuccessListener(OnSuccessListener { taskSnapshot ->
-                    storage.downloadUrl.addOnSuccessListener {
-                        if (editContent != null) {
-                            updateDataToFirebaseDatabase(it.toString(), editContent)
-                        }
+            binding.btnUpdate.setOnClickListener {
+                if (mediaData !== null) {
+                    binding.progressBar.visibility = View.VISIBLE
+                    mediaData?.let { it1 ->
+                        storage.putFile(it1).addOnSuccessListener(OnSuccessListener { taskSnapshot ->
+                            storage.downloadUrl.addOnSuccessListener {
+                                if (editContent != null) {
+                                    updateDataToFirebaseDatabase(it.toString(), editContent)
+                                }
+                            }
+                            Toast.makeText(this@EditHotSpotAdminActivity,"Update Berhasil", Toast.LENGTH_SHORT).show()
+                        })
                     }
-                    Toast.makeText(this@EditHotSpotAdminActivity,"Update Berhasil", Toast.LENGTH_SHORT).show()
-                })
+                } else {
+                    if (editContent != null) {
+                        updateDataToFirebaseDatabaseWithoutImage(editContent)
+                    }
+                }
             }
         }
     }
@@ -85,6 +93,28 @@ class EditHotSpotAdminActivity : AppCompatActivity() {
         val uploader = binding.edtUploader.text.toString().trim()
 
         val contentData = Content(content.id, title, profileImageUrl, description, uploader, content.type)
+
+        content.id?.let {
+            database.child(it).setValue(contentData).addOnSuccessListener {
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(this@EditHotSpotAdminActivity, "Update Berhasil", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@EditHotSpotAdminActivity, AdminActivity::class.java)
+                startActivity(intent)
+            }
+                .addOnFailureListener {
+                    Toast.makeText(this@EditHotSpotAdminActivity,"Update Gagal", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
+    private fun updateDataToFirebaseDatabaseWithoutImage(content: Content) {
+        database = FirebaseDatabase.getInstance().reference.child("Hot Spot")
+
+        val title = binding.edtTitle.text.toString().trim()
+        val description = binding.edtDescription.text.toString().trim()
+        val uploader = binding.edtUploader.text.toString().trim()
+
+        val contentData = Content(content.id, title, description, content.media, uploader, content.type)
 
         content.id?.let {
             database.child(it).setValue(contentData).addOnSuccessListener {

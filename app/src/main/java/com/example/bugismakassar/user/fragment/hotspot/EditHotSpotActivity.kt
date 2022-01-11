@@ -29,7 +29,7 @@ class EditHotSpotActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         database = FirebaseDatabase.getInstance().reference.child("Hot Spot")
-        storage = FirebaseStorage.getInstance().reference.child("image")
+        storage = FirebaseStorage.getInstance().reference.child("image").child("IMG"+System.currentTimeMillis())
 
         val editContent = intent.getParcelableExtra<Content>(EXTRA_CONTENT)
         if (editContent != null) {

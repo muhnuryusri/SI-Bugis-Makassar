@@ -82,8 +82,8 @@ class EditRumahAdatAdapter (val context: Context?, private val listArticle: Arra
         }
         init {
             binding.editArticle.setOnClickListener {
-                val intent = Intent(context, EditRumahAdatActivity::class.java)
-                intent.putExtra(EditRumahAdatActivity.EXTRA_ARTICLE, listArticle.get(position))
+                val intent = Intent(context, EditRumahAdatActivityVideo::class.java)
+                intent.putExtra(EditRumahAdatActivityVideo.EXTRA_ARTICLE, listArticle.get(position))
                 context?.startActivity(intent)
             }
         }

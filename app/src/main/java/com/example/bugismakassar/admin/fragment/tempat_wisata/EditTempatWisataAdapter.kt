@@ -82,8 +82,8 @@ class EditTempatWisataAdapter (val context: Context?, private val listArticle: A
         }
         init {
             binding.editArticle.setOnClickListener {
-                val intent = Intent(context, EditTempatWisataActivity::class.java)
-                intent.putExtra(EditTempatWisataActivity.EXTRA_ARTICLE, listArticle.get(position))
+                val intent = Intent(context, EditTempatWisataActivityVideo::class.java)
+                intent.putExtra(EditTempatWisataActivityVideo.EXTRA_ARTICLE, listArticle.get(position))
                 context?.startActivity(intent)
             }
         }

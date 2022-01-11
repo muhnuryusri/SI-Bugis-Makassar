@@ -15,6 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BugisMakassar">
         <activity
+            android:name=".admin.fragment.tempat_wisata.EditTempatWisataActivityVideo"
+            android:exported="true" />
+        <activity
+            android:name=".admin.fragment.tarian_tradisional.EditTarianTradisionalActivityVideo"
+            android:exported="true" />
+        <activity
+            android:name=".admin.fragment.rumah_adat.EditRumahAdatActivityVideo"
+            android:exported="true" />
+        <activity
+            android:name=".admin.fragment.musik_tradisional.EditMusikTradisionalActivityVideo"
+            android:exported="true" />
+        <activity
             android:name=".admin.fragment.hotspot.EditHotSpotAdminActivity"
             android:exported="true" />
         <activity

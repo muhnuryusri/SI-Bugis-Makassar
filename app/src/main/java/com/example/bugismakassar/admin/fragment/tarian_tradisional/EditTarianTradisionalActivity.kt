@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.bugismakassar.admin.AdminActivity
 import com.example.bugismakassar.data.Article
 import com.example.bugismakassar.databinding.ActivityEditSejarahBugisBinding
-import com.example.bugismakassar.databinding.ActivityEditTarianTradisionalActivityBinding
+import com.example.bugismakassar.databinding.ActivityEditTarianTradisionalBinding
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -19,7 +19,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
 class EditTarianTradisionalActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityEditTarianTradisionalActivityBinding
+    private lateinit var binding: ActivityEditTarianTradisionalBinding
     private lateinit var database: DatabaseReference
     private lateinit var storage: StorageReference
 
@@ -27,11 +27,11 @@ class EditTarianTradisionalActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditTarianTradisionalActivityBinding.inflate(layoutInflater)
+        binding = ActivityEditTarianTradisionalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         database = FirebaseDatabase.getInstance().reference.child("Tarian Daerah")
-        storage = FirebaseStorage.getInstance().reference.child("image")
+        storage = FirebaseStorage.getInstance().reference.child("image").child("IMG"+System.currentTimeMillis())
 
         val editArticle = intent.getParcelableExtra<Article>(EXTRA_ARTICLE)
         if (editArticle != null) {

@@ -1,40 +1,39 @@
-package com.example.bugismakassar.admin.fragment.adat_pernikahan
+package com.example.bugismakassar.admin.fragment.tarian_tradisional
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
-import com.example.bugismakassar.R
 import com.example.bugismakassar.admin.AdminActivity
 import com.example.bugismakassar.data.Article
-import com.example.bugismakassar.data.User
-import com.example.bugismakassar.databinding.ActivityEditAdatPernikahanBinding
+import com.example.bugismakassar.databinding.ActivityEditTarianTradisionalVideoBinding
 import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class EditAdatPernikahanActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityEditAdatPernikahanBinding
+class EditTarianTradisionalActivityVideo : AppCompatActivity() {
+    private lateinit var binding: ActivityEditTarianTradisionalVideoBinding
     private lateinit var database: DatabaseReference
     private lateinit var storage: StorageReference
+
     private var mediaData: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditAdatPernikahanBinding.inflate(layoutInflater)
+        binding = ActivityEditTarianTradisionalVideoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        database = FirebaseDatabase.getInstance().reference.child("Adat Pernikahan")
-        storage = FirebaseStorage.getInstance().reference.child("image").child("IMG"+System.currentTimeMillis())
+        database = FirebaseDatabase.getInstance().reference.child("Tarian Daerah")
+        storage = FirebaseStorage.getInstance().reference.child("video").child("VID"+System.currentTimeMillis())
+
+        val progressDialog = ProgressDialog(this)
 
         val editArticle = intent.getParcelableExtra<Article>(EXTRA_ARTICLE)
         if (editArticle != null) {
@@ -43,28 +42,34 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
 
         binding.btnUploadMedia.setOnClickListener {
             val mediaIntent = Intent(Intent.ACTION_GET_CONTENT)
-            mediaIntent.setType("image/*")
-            startActivityForResult(mediaIntent, 1)
+            mediaIntent.setType("video/*")
+            startActivityForResult(mediaIntent, 2)
         }
 
         binding.btnUpdate.setOnClickListener {
-            binding.btnUpdate.setOnClickListener {
-                if (mediaData !== null) {
-                    binding.progressBar.visibility = View.VISIBLE
-                    mediaData?.let { it1 ->
-                        storage.putFile(it1).addOnSuccessListener(OnSuccessListener { taskSnapshot ->
-                            storage.downloadUrl.addOnSuccessListener {
-                                if (editArticle != null) {
-                                    updateDataToFirebaseDatabase(it.toString(), editArticle)
-                                }
+            if (mediaData !== null) {
+                binding.progressBar.visibility = View.VISIBLE
+                progressDialog.setTitle("Uploading")
+                progressDialog.setMessage("Video sedang diupload, mohon tunggu")
+                progressDialog.show()
+
+                mediaData?.let { it1 ->
+                    storage.putFile(it1).addOnSuccessListener(OnSuccessListener { taskSnapshot ->
+                        storage.downloadUrl.addOnSuccessListener {
+                            if (editArticle != null) {
+                                progressDialog.dismiss()
+                                updateDataToFirebaseDatabase(it.toString(), editArticle)
                             }
-                            Toast.makeText(this@EditAdatPernikahanActivity,"Update Berhasil", Toast.LENGTH_SHORT).show()
-                        })
+                        }
+                        Toast.makeText(this@EditTarianTradisionalActivityVideo,"Update Berhasil", Toast.LENGTH_SHORT).show()
+                    }).addOnProgressListener { snapshot ->
+                        val progress = (100.0 * snapshot.bytesTransferred / snapshot.totalByteCount);
+                        progressDialog.setMessage("Uploaded $progress%");
                     }
-                } else {
-                    if (editArticle != null) {
-                        updateDataToFirebaseDatabaseWithoutImage(editArticle)
-                    }
+                }
+            } else {
+                if (editArticle != null) {
+                    updateDataToFirebaseDatabaseWithoutVideo(editArticle)
                 }
             }
         }
@@ -73,7 +78,7 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 1) {
+        if (requestCode == 2) {
             if (resultCode == Activity.RESULT_OK) {
                 mediaData = data?.data
                 binding.tvImage.setImageURI(mediaData)
@@ -88,10 +93,12 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
             .into(binding.tvImage)
         binding.edtSource.setText(article.source)
         binding.edtDescription.setText(article.description)
+
     }
 
     private fun updateDataToFirebaseDatabase(profileImageUrl: String, article: Article) {
-        database = FirebaseDatabase.getInstance().reference.child("Adat Pernikahan")
+        database = FirebaseDatabase.getInstance().reference.child("Tarian Daerah")
+
         val title = binding.edtTitle.text.toString().trim()
         val source = binding.edtSource.text.toString().trim()
         val description = binding.edtDescription.text.toString().trim()
@@ -101,18 +108,18 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
         article.id?.let {
             database.child(it).setValue(articleData).addOnSuccessListener {
                 binding.progressBar.visibility = View.GONE
-                Toast.makeText(this@EditAdatPernikahanActivity, "Update Berhasil", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@EditAdatPernikahanActivity, AdminActivity::class.java)
+                Toast.makeText(this@EditTarianTradisionalActivityVideo, "Update Berhasil", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@EditTarianTradisionalActivityVideo, AdminActivity::class.java)
                 startActivity(intent)
             }
                 .addOnFailureListener {
-                    Toast.makeText(this@EditAdatPernikahanActivity,"Update Gagal", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@EditTarianTradisionalActivityVideo,"Update Gagal", Toast.LENGTH_SHORT).show()
                 }
         }
     }
 
-    private fun updateDataToFirebaseDatabaseWithoutImage(article: Article) {
-        database = FirebaseDatabase.getInstance().reference.child("Adat Pernikahan")
+    private fun updateDataToFirebaseDatabaseWithoutVideo(article: Article) {
+        database = FirebaseDatabase.getInstance().reference.child("Tarian Daerah")
 
         val title = binding.edtTitle.text.toString().trim()
         val source = binding.edtSource.text.toString().trim()
@@ -123,12 +130,12 @@ class EditAdatPernikahanActivity : AppCompatActivity() {
         article.id?.let {
             database.child(it).setValue(articleData).addOnSuccessListener {
                 binding.progressBar.visibility = View.GONE
-                Toast.makeText(this@EditAdatPernikahanActivity, "Update Berhasil", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@EditAdatPernikahanActivity, AdminActivity::class.java)
+                Toast.makeText(this@EditTarianTradisionalActivityVideo, "Update Berhasil", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@EditTarianTradisionalActivityVideo, AdminActivity::class.java)
                 startActivity(intent)
             }
                 .addOnFailureListener {
-                    Toast.makeText(this@EditAdatPernikahanActivity,"Update Gagal", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@EditTarianTradisionalActivityVideo,"Update Gagal", Toast.LENGTH_SHORT).show()
                 }
         }
     }

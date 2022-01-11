@@ -5,13 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.request.RequestOptions
-import com.example.bugismakassar.R
-import com.example.bugismakassar.admin.fragment.musik_tradisional.EditMusikTradisionalActivity
 import com.example.bugismakassar.data.Article
 import com.example.bugismakassar.databinding.ListItemArticleEditBinding
 import com.example.bugismakassar.databinding.ListItemArticleEditWithVideoBinding

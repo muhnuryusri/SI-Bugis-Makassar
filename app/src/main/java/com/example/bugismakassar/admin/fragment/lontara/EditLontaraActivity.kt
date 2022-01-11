@@ -34,7 +34,7 @@ class EditLontaraActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         database = FirebaseDatabase.getInstance().reference.child("Lontara")
-        storage = FirebaseStorage.getInstance().reference.child("image")
+        storage = FirebaseStorage.getInstance().reference.child("image").child("IMG"+System.currentTimeMillis())
 
         val editArticle = intent.getParcelableExtra<Article>(EXTRA_ARTICLE)
         if (editArticle != null) {
@@ -48,16 +48,22 @@ class EditLontaraActivity : AppCompatActivity() {
         }
 
         binding.btnUpdate.setOnClickListener {
-            binding.progressBar.visibility = View.VISIBLE
-            mediaData?.let { it1 ->
-                storage.putFile(it1).addOnSuccessListener(OnSuccessListener { taskSnapshot ->
-                    storage.downloadUrl.addOnSuccessListener {
-                        if (editArticle != null) {
-                            updateDataToFirebaseDatabase(it.toString(), editArticle)
+            if (mediaData !== null) {
+                binding.progressBar.visibility = View.VISIBLE
+                mediaData?.let { it1 ->
+                    storage.putFile(it1).addOnSuccessListener(OnSuccessListener { taskSnapshot ->
+                        storage.downloadUrl.addOnSuccessListener {
+                            if (editArticle != null) {
+                                updateDataToFirebaseDatabase(it.toString(), editArticle)
+                            }
                         }
-                    }
-                    Toast.makeText(this@EditLontaraActivity,"Update Berhasil", Toast.LENGTH_SHORT).show()
-                })
+                        Toast.makeText(this@EditLontaraActivity,"Update Berhasil", Toast.LENGTH_SHORT).show()
+                    })
+                }
+            } else {
+                if (editArticle != null) {
+                    updateDataToFirebaseDatabaseWithoutImage(editArticle)
+                }
             }
         }
     }
@@ -90,6 +96,30 @@ class EditLontaraActivity : AppCompatActivity() {
         val description = binding.edtDescription.text.toString().trim()
 
         val articleData = Article(article.id, title, profileImageUrl, source, description, article.type)
+
+        if (title.isNotEmpty() && profileImageUrl.isNotEmpty() && source.isNotEmpty() && description.isNotEmpty()) {
+            article.id?.let {
+                database.child(it).setValue(articleData).addOnSuccessListener {
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(this@EditLontaraActivity, "Update Berhasil", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@EditLontaraActivity, AdminActivity::class.java)
+                    startActivity(intent)
+                }
+                    .addOnFailureListener {
+                        Toast.makeText(this@EditLontaraActivity,"Update Gagal", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
+    }
+
+    private fun updateDataToFirebaseDatabaseWithoutImage(article: Article) {
+        database = FirebaseDatabase.getInstance().reference.child("Lontara")
+
+        val title = binding.edtTitle.text.toString().trim()
+        val source = binding.edtSource.text.toString().trim()
+        val description = binding.edtDescription.text.toString().trim()
+
+        val articleData = Article(article.id, title, article.media, source, description, article.type)
 
         article.id?.let {
             database.child(it).setValue(articleData).addOnSuccessListener {

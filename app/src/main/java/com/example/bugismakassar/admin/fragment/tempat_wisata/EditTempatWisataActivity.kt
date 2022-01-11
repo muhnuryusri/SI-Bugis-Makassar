@@ -30,7 +30,7 @@ class EditTempatWisataActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         database = FirebaseDatabase.getInstance().reference.child("Tempat Wisata")
-        storage = FirebaseStorage.getInstance().reference.child("image")
+        storage = FirebaseStorage.getInstance().reference.child("image").child("IMG"+System.currentTimeMillis())
 
         val editArticle = intent.getParcelableExtra<Article>(EXTRA_ARTICLE)
         if (editArticle != null) {

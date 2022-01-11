@@ -82,8 +82,8 @@ class EditTarianTradisionalAdapter (val context: Context?, private val listArtic
         }
         init {
             binding.editArticle.setOnClickListener {
-                val intent = Intent(context, EditTarianTradisionalActivity::class.java)
-                intent.putExtra(EditTarianTradisionalActivity.EXTRA_ARTICLE, listArticle.get(position))
+                val intent = Intent(context, EditTarianTradisionalActivityVideo::class.java)
+                intent.putExtra(EditTarianTradisionalActivityVideo.EXTRA_ARTICLE, listArticle.get(position))
                 context?.startActivity(intent)
             }
         }

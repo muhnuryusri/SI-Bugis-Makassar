@@ -47,13 +47,6 @@ class EditMusikTradisionalAdapter (val context: Context?, private val listArticl
                 }
             }
         }
-        init {
-            binding.editArticle.setOnClickListener {
-                val intent = Intent(context, EditMusikTradisionalActivity::class.java)
-                intent.putExtra(EditMusikTradisionalActivity.EXTRA_ARTICLE, listArticle.get(position))
-                context?.startActivity(intent)
-            }
-        }
     }
 
     private inner class VideoViewHolder(private val binding: ListItemArticleEditWithVideoBinding): RecyclerView.ViewHolder(binding.root) {
@@ -82,8 +75,8 @@ class EditMusikTradisionalAdapter (val context: Context?, private val listArticl
         }
         init {
             binding.editArticle.setOnClickListener {
-                val intent = Intent(context, EditMusikTradisionalActivity::class.java)
-                intent.putExtra(EditMusikTradisionalActivity.EXTRA_ARTICLE, listArticle.get(position))
+                val intent = Intent(context, EditMusikTradisionalActivityVideo::class.java)
+                intent.putExtra(EditMusikTradisionalActivityVideo.EXTRA_ARTICLE, listArticle.get(position))
                 context?.startActivity(intent)
             }
         }
